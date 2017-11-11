@@ -23,6 +23,10 @@ class BooksApp extends React.Component {
         })
     }
 
+    backToMain = () => {
+      this.setState({showSearchPage : false});
+    }
+
      changeShelf = (newBook, newShelf) => {
           console.log("Inside Change Shelf");
           BooksAPI.update(newBook, newShelf).then(response => {
@@ -40,7 +44,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <Search />
+          <Search showSearchPage={this.backToMain}/>
         ) : (
           <div className="list-books">
             <div className="list-books-title">
