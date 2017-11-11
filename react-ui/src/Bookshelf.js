@@ -16,7 +16,7 @@ class Bookshelf extends Component {
             <li key={book.id}>
                 <Book title={book.title} authors={book.authors} 
                 imgLinks={book.imageLinks.thumbnail} 
-                changeShelf={ changeShelf } />
+                changeShelf={ changeShelf } theBook = {book} books={books}/>
             </li>
         ))}
       </ol>
