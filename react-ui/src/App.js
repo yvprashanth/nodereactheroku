@@ -1,9 +1,8 @@
 import React from 'react'
 import './App.css'
-import Book from "./Book";
 import * as BooksAPI from "./BooksAPI";
 import Search from "./Search";
-import { Route  } from "react-router-dom";
+import Booklist from "./Booklist";
 
 
 class BooksApp extends React.Component {
@@ -25,6 +24,7 @@ class BooksApp extends React.Component {
     }
 
      changeShelf = (newBook, newShelf) => {
+          console.log("Inside Change Shelf");
           BooksAPI.update(newBook, newShelf).then(response => {
             newBook.shelf = newShelf;
             // This is one way to get a list of all books that have just been updated
@@ -46,46 +46,7 @@ class BooksApp extends React.Component {
             <div className="list-books-title">
               <h1>Prashanth Yerramilli Book Store</h1>
             </div>
-            <div className="list-books-content">
-              <div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Currently Reading</h2>
-                  <div className="bookshelf-books">
-                        <ol className="books-grid">
-                            {this.state.books.filter(book => book.shelf === "currentlyReading").map((book) => 
-                                <li key={ book.id }>
-                                    <Book title={book.title} authors={book.authors} imgLinks={book.imageLinks.thumbnail} /> 
-                                </li>
-                            )}
-                        </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
-                  <div className="bookshelf-books">
-                        <ol className="books-grid">
-                            {this.state.books.filter(book => book.shelf === "wantToRead").map((book) => 
-                                <li key={ book.id }>
-                                    <Book title={book.title} authors={book.authors} imgLinks={book.imageLinks.thumbnail} /> 
-                                </li>
-                            )}
-                        </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
-                  <div className="bookshelf-books">
-                          <ol className="books-grid">
-                            {this.state.books.filter(book => book.shelf === "read").map((book) => 
-                                <li key={ book.id }>
-                                    <Book title={book.title} authors={book.authors} imgLinks={book.imageLinks.thumbnail} /> 
-                                </li>
-                            )}
-                        </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Booklist books={this.state.books} changeShelf={this.changeShelf}/>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>

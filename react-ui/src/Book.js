@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 
 class Book extends Component {
-
   render () {
-    const {title, author, imgLinks } = this.props
+    const {title, authors, imgLinks } = this.props
     return (
       <div className='book'>
         <div className='book-top'>
@@ -30,10 +29,10 @@ class Book extends Component {
           </div>
         </div>
         <div className='book-title'>
-          {this.props.title}
+          {title}
         </div>
         <div className='book-authors'>
-          {this.props.authors}
+          {this.props.authors.join(", ")}
         </div>
       </div>
     )
