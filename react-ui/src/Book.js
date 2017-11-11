@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import ShelfChanger from "./ShelfChanger";
-
+import ShelfChanger from './ShelfChanger'
 
 class Book extends Component {
   render () {
-    const {title, authors, imgLinks, changeShelf, theBook , books} = this.props
+    const {title, authors, imgLinks, changeShelf, theBook, books} = this.props
     return (
       <div className='book'>
         <div className='book-top'>

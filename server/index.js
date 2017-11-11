@@ -18,6 +18,11 @@ app.get('*', function(request, response) {
   response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
 });
 
+// All remaining requests return the React app, so it can handle routing.
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+});
+
 app.listen(PORT, function () {
   console.log(`Listening on port ${PORT}`);
 });
