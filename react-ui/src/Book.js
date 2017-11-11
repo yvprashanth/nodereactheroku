@@ -1,39 +1,22 @@
 import React, { Component } from 'react'
+import ShelfChanger from "./ShelfChanger";
+
 
 class Book extends Component {
-
   render () {
-    const {title, author, imgLinks } = this.props
+    const {title, authors, imgLinks, changeShelf, theBook , books} = this.props
     return (
       <div className='book'>
         <div className='book-top'>
           <div className='book-cover' style={{ width: 128, height: 193, backgroundImage: `url(${this.props.imgLinks}` }}>
           </div>
-          <div className='book-shelf-changer'>
-            <select>
-              <option value='none' disabled>
-                Move to...
-              </option>
-              <option value='currentlyReading'>
-                Currently Reading
-              </option>
-              <option value='wantToRead'>
-                Want to Read
-              </option>
-              <option value='read'>
-                Read
-              </option>
-              <option value='none'>
-                None
-              </option>
-            </select>
-          </div>
+          <ShelfChanger book={theBook} books={books} changeShelf={changeShelf} />
         </div>
         <div className='book-title'>
-          {this.props.title}
+          {title}
         </div>
         <div className='book-authors'>
-          {this.props.authors}
+          {this.props.authors.join(', ')}
         </div>
       </div>
     )
