@@ -11,6 +11,7 @@ class Search extends Component {
   }
 
   handleChange = even => {
+    this.setState({value : even.target.value})
     console.log(even.target.value);
   }
 
