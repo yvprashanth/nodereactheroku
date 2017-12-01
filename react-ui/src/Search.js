@@ -2,27 +2,24 @@ import React, { Component } from 'react'
 import {Link } from 'react-router-dom'
 
 class Search extends Component {
-
   constructor(props){
     super(props);
     this.state = {value : ''};
-
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = even => {
-    this.setState({value : even.target.value})
+    this.setState({value : even.target.value});
     console.log(even.target.value);
   }
 
   render () {
-    const { showSearchPage } = this.props
+    const { showSearchPage } = this.props;
 
     return (
       <div className='search-books'>
         <div className='search-books-bar'>
           <Link to='/' className='close-search'>Close</Link>
-          {/* <a className='close-search' onClick={showSearchPage}>Close</a> */}
           <div className='search-books-input-wrapper'>
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.
